@@ -157,3 +157,10 @@ button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+
+
+#error{
+    color: red;
+    font-size: 2rem;
+}
