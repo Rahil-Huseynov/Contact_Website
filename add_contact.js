@@ -5,13 +5,13 @@ const contact_menu = document.getElementById('contact_menu');
 const error = document.getElementById('error');
 
 contact_menu.addEventListener('click', () => {
-    
+
     window.location.href = "index.html";
 
 });
 
 add_contact_button.addEventListener('click', () => {
-    
+
     const name = document.getElementById('name');
 
     const surname = document.getElementById('surname');
@@ -25,9 +25,9 @@ add_contact_button.addEventListener('click', () => {
     const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
-    
+
     const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
-    
+
     const numberCheck = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
     if (emailCheck.test(email.value)) {
@@ -36,7 +36,7 @@ add_contact_button.addEventListener('click', () => {
         email.style.borderColor = 'red';
     }
     if (nameCheck.test(name.value)) {
-        name.style.borderColor = 'green';   
+        name.style.borderColor = 'green';
     } else {
         name.style.borderColor = 'red';
     }
@@ -54,31 +54,39 @@ add_contact_button.addEventListener('click', () => {
     const isNameValid = nameCheck.test(name.value);
 
     const isSurnameValid = surnameCheck.test(surname.value);
-    
+
     const isEmailValid = emailCheck.test(email.value);
-    
+
     const isNumberValid = numberCheck.test(number.value);
 
     if (isEmailValid && isNameValid && isSurnameValid && isNumberValid) {
+
         const contact = {
             name: name.value,
-
+          
             surname: surname.value,
-
+          
             email: email.value,
-
+          
             number: number.value,
-
+          
             description: description.value
         };
-        localStorage.setItem('contacts', JSON.stringify(contact));
+      
+        const storedContacts = localStorage.getItem('contacts');
+      
+        let contactsArray = storedContacts ? JSON.parse(storedContacts) : [];
+
+        contactsArray.push(contact);
+
+        localStorage.setItem('contacts', JSON.stringify(contactsArray));
 
         error.innerHTML = `Information added successfully`;
-
+      
         error.style.color = 'green';
     } else {
         error.innerHTML = `The data was entered incorrectly`;
-
+      
         error.style.color = 'red';
     }
 });
