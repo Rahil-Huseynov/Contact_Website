@@ -10,9 +10,9 @@ let all_contact = [];
 
 const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
+const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
-const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
+const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
 const numberCheck = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
@@ -106,7 +106,7 @@ function displayContacts(contacts) {
 
         emaildiv.style.display = 'none';
 
-        const email = document.createElement('span');
+        const email = document.createElement('p');
 
         const emailvalue = document.createElement('span');
 
@@ -225,7 +225,7 @@ function displayContacts(contacts) {
 
 
         down.addEventListener('click', () => {
-            if (contactDiv.style.minHeight === '200px') {
+            if (contactDiv.style.minHeight === '230px') {
 
                 contactDiv.style.minHeight = '86px';
 
@@ -233,16 +233,21 @@ function displayContacts(contacts) {
 
                 emaildiv.style.display = 'none';
             } else {
-                contactDiv.style.minHeight = '200px';
+                contactDiv.style.minHeight = '230px';
 
-                descriptiondivitem.style.display = 'block';
+                descriptiondivitem.style.display = 'grid'
+
+                descriptiondivitem.style.justifyContent = 'center'
 
                 descriptiondivitem.classList.add('description');
 
-                emaildiv.style.display = 'flex'
+                emaildiv.style.display = 'grid'
 
-                emaildiv.style.gap = '0.5rem'
+                emaildiv.classList.add('description');
+                
+                emaildiv.style.justifyContent = 'center'
 
+                emaildiv.style.textAlign = 'center'
             }
         });
 

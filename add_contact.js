@@ -24,9 +24,9 @@ add_contact_button.addEventListener('click', () => {
 
     const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
+    const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
-    const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
+    const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
     const numberCheck = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
@@ -94,13 +94,9 @@ description.addEventListener('input', () => {
         error.innerHTML = `You can only enter up to 20 characters.`;
     
         error.style.color = 'red';
-    
-        description.style.borderColor = 'red';
-    
+        
         description.value = description.value.slice(0, maxLength);
     } else {
         error.innerHTML = ``;
-    
-        description.style.borderColor = 'initial';
     }
 });
