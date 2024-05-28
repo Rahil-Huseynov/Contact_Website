@@ -91,6 +91,7 @@ body {
 
 .contactDiv {
     border: 1px solid black;
+    min-width: 1000px;
 }
 
 .email{
@@ -109,11 +110,7 @@ body {
 
 .description {
     word-break: break-all;
-    width: 50px;
-}
-
-.description {
-    display: none;
+    width: 300px;
 }
 
 .down {
@@ -155,4 +152,42 @@ body {
 .data_description{
     display: flex;
     justify-content: space-around;
+}
+
+.save{
+    display: none;
+}
+
+.panel {
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+}
+
+.panel.active {
+    height: 100px;
+}
+.checkpanel_container{
+    display: flex;
+    justify-content: end;
+}
+
+.panel1{
+    display: none;
+    background-color: green;
+}
+
+.panel2{
+    display: none;
+    background-color: red;
+}
+
+.inputedit{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    text-align: center;
 }

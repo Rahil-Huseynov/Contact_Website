@@ -19,7 +19,7 @@ add_contact_button.addEventListener('click', () => {
     const email = document.getElementById('email');
 
     const number = document.getElementById('number');
-
+    
     const description = document.getElementById('description');
 
     const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,34 +59,48 @@ add_contact_button.addEventListener('click', () => {
 
     const isNumberValid = numberCheck.test(number.value);
 
-    if (isEmailValid && isNameValid && isSurnameValid && isNumberValid) {
 
+    if (isEmailValid && isNameValid && isSurnameValid && isNumberValid) {
         const contact = {
             name: name.value,
-          
             surname: surname.value,
-          
             email: email.value,
-          
             number: number.value,
-          
             description: description.value
         };
-      
+
         const storedContacts = localStorage.getItem('contacts');
-      
+    
         let contactsArray = storedContacts ? JSON.parse(storedContacts) : [];
-
+    
         contactsArray.push(contact);
-
+    
         localStorage.setItem('contacts', JSON.stringify(contactsArray));
 
         error.innerHTML = `Information added successfully`;
-      
+    
         error.style.color = 'green';
     } else {
         error.innerHTML = `The data was entered incorrectly`;
-      
         error.style.color = 'red';
+    }
+});
+
+description.addEventListener('input', () => {
+    const maxLength = 20;
+    
+    if (description.value.length > maxLength) {
+    
+        error.innerHTML = `You can only enter up to 20 characters.`;
+    
+        error.style.color = 'red';
+    
+        description.style.borderColor = 'red';
+    
+        description.value = description.value.slice(0, maxLength);
+    } else {
+        error.innerHTML = ``;
+    
+        description.style.borderColor = 'initial';
     }
 });

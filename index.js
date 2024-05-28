@@ -8,6 +8,14 @@ const add_contact = document.getElementById('add_contact');
 
 let all_contact = [];
 
+const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
+
+const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,50}$/;
+
+const numberCheck = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+
 add_contact_button.addEventListener('click', () => {
 
     window.location.href = "add_contact.html";
@@ -26,28 +34,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         displayContacts(contacts);
 
-        console.log(all_contact);
     }
 });
-
 
 function displayContacts(contacts) {
 
     add_contact.innerHTML = '';
 
     contacts.forEach((contact, index) => {
-
         const container = document.createElement('div');
 
-        const item = document.createElement('div')
+        const item = document.createElement('div');
 
-        item.classList.add('item')
+        item.classList.add('item');
 
         const contactDiv = document.createElement('div');
 
         const descriptionDiv = document.createElement('div');
 
-        descriptionDiv.classList.add('descriptionDiv')
+        descriptionDiv.classList.add('descriptionDiv');
 
         const imgcontainer = document.createElement('div');
 
@@ -61,23 +66,77 @@ function displayContacts(contacts) {
 
         contactDiv.classList.add('contactDiv');
 
-        const name = document.createElement('p');
+        const namediv = document.createElement('div');
 
-        name.innerHTML = `<p style="text-align: center">Name: <span> ${contact.name}</span></p>`
+        namediv.style.display = 'flex'
 
-        const surname = document.createElement('p');
+        namediv.style.gap = '0.5rem'
 
-        surname.innerHTML = `<p style="text-align: center;">Surname: <span> ${contact.surname}</span></p>`;
+        const name = document.createElement('span');
 
-        const email = document.createElement('p');
+        const namevalue = document.createElement('span');
 
-        email.classList.add('email')
+        namediv.appendChild(name);
 
-        email.innerHTML = ` <p class="email_p" > Email: </p> <p>${contact.email}</p>`;
+        namediv.appendChild(namevalue);
 
-        const number = document.createElement('p');
+        name.innerHTML = `Name:`;
 
-        number.innerHTML =`<p style="text-align: center;">Phone: <span> ${contact.number}</span></p>`; 
+        namevalue.innerHTML = `${contact.name}`;
+
+        const surnamediv = document.createElement('div');
+
+        const surname = document.createElement('span');
+
+        const surnamevalue = document.createElement('span');
+
+        surnamediv.style.display = 'flex'
+
+        surnamediv.style.gap = '0.5rem'
+
+        surnamediv.appendChild(surname);
+
+        surnamediv.appendChild(surnamevalue);
+
+        surname.innerHTML = `Surname:`;
+
+        surnamevalue.innerHTML = `${contact.surname}`;
+
+        const emaildiv = document.createElement('div');
+
+        emaildiv.style.display = 'none';
+
+        const email = document.createElement('span');
+
+        const emailvalue = document.createElement('span');
+
+        emaildiv.appendChild(email);
+
+        emaildiv.appendChild(emailvalue);
+
+        email.innerHTML = `Email:`;
+
+        emailvalue.innerHTML = `${contact.email}`;
+
+        email.classList.add('email_p');
+
+        const numberdiv = document.createElement('div');
+
+        const number = document.createElement('span');
+
+        const numbervalue = document.createElement('span');
+
+        numberdiv.style.display = 'flex'
+
+        numberdiv.style.gap = '0.5rem'
+
+        numberdiv.appendChild(number);
+
+        numberdiv.appendChild(numbervalue);
+
+        number.innerHTML = `Phone:`;
+
+        numbervalue.innerHTML = `${contact.number}`;
 
         const down = document.createElement('img');
 
@@ -91,37 +150,72 @@ function displayContacts(contacts) {
 
         del.src = './image/delete.png';
 
+
+        const edit = document.createElement('img');
+
+        edit.classList.add('down');
+
+        edit.src = './image/edit.png';
+
+        const save = document.createElement('img');
+
+        save.src = './image/diskette.png';
+
+        save.classList.add('down');
+
+        save.classList.add('save');
+
+
+        const descriptiondivitem = document.createElement('div');
+
+        descriptiondivitem.style.display = 'none';
+
         const description = document.createElement('p');
 
-        description.innerHTML = `<p class="description_p">Description:</p> <p style="text-align: center;">${contact.description}</p>`;
+        description.classList.add('description_p');
 
-        description.classList.add('description');
+        const descriptionvalue = document.createElement('span');
+
+        descriptionvalue.style.textAlign = 'center';
+
+        descriptiondivitem.appendChild(description);
+
+        descriptiondivitem.appendChild(descriptionvalue);
+
+        description.innerHTML = `Description:`;
+
+        descriptionvalue.innerHTML = `${contact.description}`;
 
         imgcontainer.appendChild(img);
 
         item.appendChild(imgcontainer);
 
-        item.appendChild(name);
+        item.appendChild(namediv);
 
-        item.appendChild(surname);
+        item.appendChild(surnamediv);
 
-        descriptionDiv.appendChild(email);
 
-        item.appendChild(number);
+        descriptionDiv.appendChild(emaildiv);
 
-        const icon = document.createElement('div')
+        item.appendChild(numberdiv);
 
-        icon.classList.add('icon')
+        const icon = document.createElement('div');
+
+        icon.classList.add('icon');
 
         item.appendChild(icon);
 
         icon.appendChild(del);
 
+        icon.appendChild(edit);
+
+        icon.appendChild(save);
+
         icon.appendChild(down);
 
-        descriptionDiv.appendChild(description);
+        descriptionDiv.appendChild(descriptiondivitem);
 
-        contactDiv.appendChild(item)
+        contactDiv.appendChild(item);
 
         contactDiv.appendChild(descriptionDiv);
 
@@ -129,19 +223,31 @@ function displayContacts(contacts) {
 
         add_contact.appendChild(container);
 
+
         down.addEventListener('click', () => {
             if (contactDiv.style.minHeight === '200px') {
+
                 contactDiv.style.minHeight = '86px';
-                description.style.display = 'none';
-                email.style.display = 'none';
+
+                descriptiondivitem.style.display = 'none';
+
+                emaildiv.style.display = 'none';
             } else {
                 contactDiv.style.minHeight = '200px';
-                description.style.display = 'block';
-                email.style.display = 'block';
+
+                descriptiondivitem.style.display = 'block';
+
+                descriptiondivitem.classList.add('description');
+
+                emaildiv.style.display = 'flex'
+
+                emaildiv.style.gap = '0.5rem'
+
             }
         });
 
         del.addEventListener('click', () => {
+
             all_contact.splice(index, 1);
 
             localStorage.setItem('contacts', JSON.stringify(all_contact));
@@ -149,24 +255,127 @@ function displayContacts(contacts) {
             displayContacts(all_contact);
         });
 
-        item.addEventListener("mouseover", () => {
-            let color = "#";
-            const letters = "0123456789ABCDEF";
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
+        edit.addEventListener('click', () => {
+            contactDiv.style.minHeight = '200px';
+
+            descriptiondivitem.style.display = 'block';
+
+            emaildiv.style.display = 'block';
+
+            const nameinput = document.createElement('input');
+           
+            nameinput.classList.add('inputedit')
+            
+            nameinput.value = namevalue.textContent;
+
+            nameinput.id = 'namevalue';
+
+            namevalue.replaceWith(nameinput);
+
+            const surnameinput = document.createElement('input');
+
+            surnameinput.value = surnamevalue.textContent;
+            
+            surnameinput.classList.add('inputedit')
+            
+            surnameinput.id = 'surnamevalue';
+
+            surnamevalue.replaceWith(surnameinput);
+
+            const numberinput = document.createElement('input');
+
+            numberinput.value = numbervalue.textContent;
+
+            numberinput.classList.add('inputedit')
+
+            numberinput.id = 'numbervalue';
+
+            numbervalue.replaceWith(numberinput);
+
+            const emailinput = document.createElement('input');
+
+            emailinput.value = emailvalue.textContent;
+
+            emailinput.classList.add('inputedit')
+
+            emailinput.id = 'emailvalue';
+
+            emailvalue.replaceWith(emailinput);
+
+            const descriptioninput = document.createElement('textarea');
+
+            descriptioninput.value = descriptionvalue.textContent;
+
+            descriptioninput.classList.add('inputedit')
+
+            descriptioninput.setAttribute('maxlength', 10 * 10)
+
+            descriptioninput.id = 'descriptionvalue';
+
+            descriptionvalue.replaceWith(descriptioninput);
+
+            edit.style.display = 'none';
+
+            save.style.display = 'block';
+
+        });
+
+        save.addEventListener('click', () => {
+
+            const nameinput = document.getElementById('namevalue');
+
+            const surnameinput = document.getElementById('surnamevalue');
+
+            const numberinput = document.getElementById('numbervalue');
+
+            const emailinput = document.getElementById('emailvalue');
+
+            const descriptioninput = document.getElementById('descriptionvalue');
+
+            const isNameValid = nameCheck.test(nameinput.value);
+
+            const isSurnameValid = surnameCheck.test(surnameinput.value);
+
+            const isEmailValid = emailCheck.test(emailinput.value);
+
+            const isNumberValid = numberCheck.test(numberinput.value);
+
+            nameinput.style.borderColor = isNameValid ? 'green' : 'red';
+
+            surnameinput.style.borderColor = isSurnameValid ? 'green' : 'red';
+
+            emailinput.style.borderColor = isEmailValid ? 'green' : 'red';
+
+            numberinput.style.borderColor = isNumberValid ? 'green' : 'red';
+
+
+
+            if (isNameValid && isSurnameValid && isEmailValid && isNumberValid) {
+
+                all_contact[index].name = nameinput.value;
+
+                all_contact[index].surname = surnameinput.value;
+
+                all_contact[index].number = numberinput.value;
+
+                all_contact[index].email = emailinput.value;
+
+                all_contact[index].description = descriptioninput.value;
+
+                localStorage.setItem('contacts', JSON.stringify(all_contact));
+
+                displayContacts(all_contact);
+
+
+                successPanelfunc()
+            } else {
+                errorPanelfunc()
             }
-            item.style.backgroundColor = color;
         });
-
-        item.addEventListener("mouseout", () => {
-            item.style.backgroundColor = "";
-        });
-
     });
 }
 
-search_button.addEventListener('click', () => {
-
+search_input.addEventListener('input', () => {
     const searchValue = search_input.value.toLowerCase();
 
     const filteredContacts = all_contact.filter(contact =>
@@ -176,24 +385,44 @@ search_button.addEventListener('click', () => {
     );
 
     displayContacts(filteredContacts);
-
 });
 
 
-search_input.onkeydown = (e) => {
 
-    if (e.key === 'Enter') {
+function successPanelfunc() {
 
-        const searchValue = search_input.value.toLowerCase();
+    const successPanel = document.getElementById('successPanel')
 
-        const filteredContacts = all_contact.filter(contact =>
+    successPanel.style.display = 'block';
+
+    setTimeout(function () {
+
+        successPanel.style.display = 'none';
+
+    }, 3000);
+}
+
+function errorPanelfunc() {
+
+    const errorPanel = document.getElementById('errorPanel')
+
+    errorPanel.style.display = 'block';
+
+    setTimeout(function () {
+
+        errorPanel.style.display = 'none';
+
+    }, 3000);
+}
+
+descriptionvalue.addEventListener('input', () => {
     
-            contact.name.toLowerCase().includes(searchValue)
+    const maxLength = 20;
     
-        );
+    if (descriptionvalue.value.length > maxLength) {
+
+        descriptionvalue.style.borderColor = 'red';
     
-        displayContacts(filteredContacts);
-
-    }
-};
-
+        descriptionvalue.value = description.value.slice(0, maxLength);
+    } 
+});
