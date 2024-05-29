@@ -158,9 +158,55 @@ button {
     margin: 0;
 }
 
-
-
 #error{
     color: red;
     font-size: 2rem;
+}
+
+.panel {
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+}
+
+.panel.active {
+    height: 100px;
+}
+
+.checkpanel_container {
+    display: none;
+    justify-content: end; 
+}
+
+.panel1 {
+    display: none;
+    background-color: green;
+}
+
+.panel2 {
+    display: none;
+    background-color: red;
+}
+
+
+.panel {
+    animation-name: div;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes div {
+    from {
+        transform: translateY(-100px);
+    }
+
+    to {
+        transform: translateY(100);
+    }
+
 }

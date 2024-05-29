@@ -248,6 +248,7 @@ function displayContacts(contacts) {
                 emaildiv.style.justifyContent = 'center'
 
                 emaildiv.style.textAlign = 'center'
+                
             }
         });
 
@@ -258,14 +259,20 @@ function displayContacts(contacts) {
             localStorage.setItem('contacts', JSON.stringify(all_contact));
 
             displayContacts(all_contact);
+
+            delPanelfunc()
         });
 
         edit.addEventListener('click', () => {
             contactDiv.style.minHeight = '200px';
 
-            descriptiondivitem.style.display = 'block';
+            descriptiondivitem.style.display = 'flex';
 
-            emaildiv.style.display = 'block';
+            descriptiondivitem.style.flexDirection = 'column'
+
+            emaildiv.style.display = 'flex';
+
+            emaildiv.style.flexDirection = 'column'
 
             const nameinput = document.createElement('input');
            
@@ -398,11 +405,38 @@ function successPanelfunc() {
 
     const successPanel = document.getElementById('successPanel')
 
+    const checkpanel_container =document.getElementById('checkpanel_container')
+
+    checkpanel_container.style.display = 'flex'
+
+
     successPanel.style.display = 'block';
 
     setTimeout(function () {
 
         successPanel.style.display = 'none';
+
+        checkpanel_container.style.display = 'none'
+
+    }, 3000);
+}
+
+function delPanelfunc() {
+
+    const delPanel = document.getElementById('delPanel')
+
+    delPanel.style.display = 'block';
+
+    const checkpanel_container =document.getElementById('checkpanel_container')
+
+    checkpanel_container.style.display = 'flex'
+
+
+    setTimeout(function () {
+
+        delPanel.style.display = 'none';
+
+        checkpanel_container.style.display = 'none'
 
     }, 3000);
 }
@@ -413,9 +447,16 @@ function errorPanelfunc() {
 
     errorPanel.style.display = 'block';
 
+    const checkpanel_container =document.getElementById('checkpanel_container')
+
+    checkpanel_container.style.display = 'flex'
+
+
     setTimeout(function () {
 
         errorPanel.style.display = 'none';
+        
+        checkpanel_container.style.display = 'none'
 
     }, 3000);
 }

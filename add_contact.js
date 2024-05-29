@@ -11,7 +11,7 @@ contact_menu.addEventListener('click', () => {
 });
 
 add_contact_button.addEventListener('click', () => {
-
+    
     const name = document.getElementById('name');
 
     const surname = document.getElementById('surname');
@@ -77,12 +77,10 @@ add_contact_button.addEventListener('click', () => {
     
         localStorage.setItem('contacts', JSON.stringify(contactsArray));
 
-        error.innerHTML = `Information added successfully`;
-    
-        error.style.color = 'green';
+       
+        successPanelfunc()
     } else {
-        error.innerHTML = `The data was entered incorrectly`;
-        error.style.color = 'red';
+        errorPanelfunc() 
     }
 });
 
@@ -100,3 +98,42 @@ description.addEventListener('input', () => {
         error.innerHTML = ``;
     }
 });
+
+function successPanelfunc() {
+
+    const successPanel = document.getElementById('successPanel')
+
+    const checkpanel_container =document.getElementById('checkpanel_container')
+
+    checkpanel_container.style.display = 'flex'
+
+    successPanel.style.display = 'block';
+
+    setTimeout(function () {
+
+        successPanel.style.display = 'none';
+
+        checkpanel_container.style.display = 'none'
+
+    }, 3000);
+}
+
+
+function errorPanelfunc() {
+
+    const errorPanel = document.getElementById('errorPanel')
+
+    const checkpanel_container =document.getElementById('checkpanel_container')
+
+    checkpanel_container.style.display = 'flex'
+
+    errorPanel.style.display = 'block';
+
+    setTimeout(function () {
+
+        errorPanel.style.display = 'none';
+
+        checkpanel_container.style.display = 'none'
+
+    }, 3000);
+}

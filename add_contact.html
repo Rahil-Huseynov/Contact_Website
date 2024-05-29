@@ -9,14 +9,21 @@
 </head>
 
 <body>
+
     <div class="all_items_container">
-        <div class="add_title">
-            <div>
-                <p class="add_contact_word">Add Contact</p>
-            </div>
-            <div>
-                <button class="contact" id="contact_menu">Contact</button>
-            </div>
+        <div>
+            <div class="add_title">
+                <div>
+                    <p class="add_contact_word">Add Contact</p>
+                </div>
+                <div>
+                    <button class="contact" id="contact_menu">Contact</button>
+                </div>
+                <div class="checkpanel_container" id="checkpanel_container">
+                    <div class="panel panel1" id="successPanel">Data has been written to memory</div>
+                    <div class="panel panel2" id="errorPanel">Data was not written to memory</div>
+                </div>
+            </div> 
         </div>
         <div class="container">
             <div class="svg_container">
@@ -36,22 +43,25 @@
                     </div>
                     <div class="input_container">
                         <span class="span_word">Surname:</span>
-                        <input style="margin-left: 2.5rem;" type="text" id="surname" autocomplete="off" placeholder="Doe">
+                        <input style="margin-left: 2.5rem;" type="text" id="surname" autocomplete="off"
+                            placeholder="Doe">
                     </div>
 
                     <div class="input_container">
                         <span class="span_word">Email:</span>
-                        <input style="margin-left: 4rem;" type="email" id="email" autocomplete="off" placeholder="example@gmail.com">
+                        <input style="margin-left: 4rem;" type="email" id="email" autocomplete="off"
+                            placeholder="example@gmail.com">
                     </div>
 
                     <div class="input_container">
                         <span class="span_word">Phone:</span>
-                        <input style="margin-left: 3.9rem;" type="tel" id="number" autocomplete="off" placeholder="+91 8087339090">
+                        <input style="margin-left: 3.9rem;" type="tel" id="number" autocomplete="off"
+                            placeholder="+91 8087339090">
                     </div>
                     <div class="input_container">
                         <span class="span_word">Description:</span>
-                        <textarea style="margin-left: 1.4rem;" name="description" id="description" rows="10"
-                            cols="40" autocomplete="off" placeholder="Describe the person."></textarea>
+                        <textarea style="margin-left: 1.4rem;" name="description" id="description" rows="10" cols="44"
+                            autocomplete="off" placeholder="Describe the person."></textarea>
                     </div>
                     <div id="error"></div>
                 </div>

@@ -94,9 +94,10 @@ body {
     min-width: 1000px;
 }
 
-.email{
+.email {
     display: none;
 }
+
 #add_contact {
     display: flex;
     flex-direction: column;
@@ -121,7 +122,7 @@ body {
 
 .item {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
     justify-content: space-around;
     gap: 3rem;
@@ -133,28 +134,29 @@ body {
     justify-content: space-around;
 }
 
-.description{
+.description {
     min-width: 200px;
 }
 
-.description_p{
+.description_p {
     text-align: center;
 }
 
-.email_p{
+.email_p {
     text-align: center;
 }
 
-.icon{
+.icon {
     display: flex;
     gap: 1rem;
 }
-.data_description{
+
+.data_description {
     display: flex;
     justify-content: space-around;
 }
 
-.save{
+.save {
     display: none;
 }
 
@@ -169,25 +171,46 @@ body {
 .panel.active {
     height: 100px;
 }
-.checkpanel_container{
-    display: flex;
+
+.checkpanel_container {
+    display: none;
     justify-content: end;
 }
 
-.panel1{
+.panel1 {
     display: none;
     background-color: green;
 }
 
-.panel2{
+.panel2 {
     display: none;
     background-color: red;
 }
 
-.inputedit{
+.inputedit {
     border-top: none;
     border-left: none;
     border-right: none;
     background-color: transparent;
     text-align: center;
+}
+
+.panel {
+    animation-name: div;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes div {
+    from {
+        transform: translateY(-100px);
+    }
+
+    to {
+        transform: translateY(100);
+    }
+
 }
