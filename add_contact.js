@@ -76,8 +76,6 @@ add_contact_button.addEventListener('click', () => {
         contactsArray.push(contact);
     
         localStorage.setItem('contacts', JSON.stringify(contactsArray));
-
-       
         successPanelfunc()
     } else {
         errorPanelfunc() 

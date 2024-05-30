@@ -173,14 +173,15 @@ body {
 }
 
 .checkpanel_container {
-    display: none;
-    justify-content: end;
+    display: flex;
+    justify-content: center;
 }
 
 .panel1 {
     display: none;
     background-color: green;
-}
+justify-content: center
+;}
 
 .panel2 {
     display: none;
@@ -213,4 +214,19 @@ body {
         transform: translateY(100);
     }
 
+}
+
+
+.contact_title_container {
+    position: relative;
+}
+
+.checkpanel_container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; 
+    display: flex;
+    justify-content: center; 
 }

@@ -410,7 +410,7 @@ function successPanelfunc() {
     checkpanel_container.style.display = 'flex'
 
 
-    successPanel.style.display = 'block';
+    successPanel.style.display = 'flex';
 
     setTimeout(function () {
 
@@ -425,7 +425,7 @@ function delPanelfunc() {
 
     const delPanel = document.getElementById('delPanel')
 
-    delPanel.style.display = 'block';
+    delPanel.style.display = 'flex';
 
     const checkpanel_container =document.getElementById('checkpanel_container')
 
@@ -445,7 +445,7 @@ function errorPanelfunc() {
 
     const errorPanel = document.getElementById('errorPanel')
 
-    errorPanel.style.display = 'block';
+    errorPanel.style.display = 'flex';
 
     const checkpanel_container =document.getElementById('checkpanel_container')
 
