@@ -11,7 +11,7 @@ contact_menu.addEventListener('click', () => {
 });
 
 add_contact_button.addEventListener('click', () => {
-    
+
     const name = document.getElementById('name');
 
     const surname = document.getElementById('surname');
@@ -19,14 +19,14 @@ add_contact_button.addEventListener('click', () => {
     const email = document.getElementById('email');
 
     const number = document.getElementById('number');
-    
+
     const description = document.getElementById('description');
 
     const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
+    const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšıəğöşçùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
-    const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
+    const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöıəğöşçõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
     const numberCheck = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
@@ -70,27 +70,27 @@ add_contact_button.addEventListener('click', () => {
         };
 
         const storedContacts = localStorage.getItem('contacts');
-    
+
         let contactsArray = storedContacts ? JSON.parse(storedContacts) : [];
-    
+
         contactsArray.push(contact);
-    
+
         localStorage.setItem('contacts', JSON.stringify(contactsArray));
         successPanelfunc()
     } else {
-        errorPanelfunc() 
+        errorPanelfunc()
     }
 });
 
 description.addEventListener('input', () => {
     const maxLength = 20;
-    
+
     if (description.value.length > maxLength) {
-    
+
         error.innerHTML = `You can only enter up to 20 characters.`;
-    
+
         error.style.color = 'red';
-        
+
         description.value = description.value.slice(0, maxLength);
     } else {
         error.innerHTML = ``;
@@ -101,7 +101,7 @@ function successPanelfunc() {
 
     const successPanel = document.getElementById('successPanel')
 
-    const checkpanel_container =document.getElementById('checkpanel_container')
+    const checkpanel_container = document.getElementById('checkpanel_container')
 
     checkpanel_container.style.display = 'flex'
 
@@ -121,7 +121,7 @@ function errorPanelfunc() {
 
     const errorPanel = document.getElementById('errorPanel')
 
-    const checkpanel_container =document.getElementById('checkpanel_container')
+    const checkpanel_container = document.getElementById('checkpanel_container')
 
     checkpanel_container.style.display = 'flex'
 
@@ -135,3 +135,23 @@ function errorPanelfunc() {
 
     }, 3000);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const storedContacts = localStorage.getItem('contacts');
+
+    let contactsArray = storedContacts ? JSON.parse(storedContacts) : [];
+
+    if (!storedContacts) {
+        for (let i = 0; i < 10; i++) {
+            const data_item = {
+                name: 'Fazil',
+                surname: 'Məmmədov',
+                email: 'fazil.mammedov@gmail.com',
+                number: '+994500000000',
+                description: 'Hello World'
+            };
+            contactsArray.push(data_item);
+        }
+        localStorage.setItem('contacts', JSON.stringify(contactsArray));
+    }
+});

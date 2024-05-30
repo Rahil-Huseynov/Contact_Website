@@ -183,11 +183,18 @@ button {
 .panel1 {
     display: none;
     background-color: green;
+    width: 100px;
+    border-radius: 10px;
+
+
 }
 
 .panel2 {
     display: none;
     background-color: red;
+    width: 100px;
+    border-radius: 10px;
+
 }
 
 
@@ -218,8 +225,8 @@ button {
 .checkpanel_container {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 100%;
+    transform: translateX(-100%);
     z-index: 1000; 
     display: flex;
     justify-content: center; 

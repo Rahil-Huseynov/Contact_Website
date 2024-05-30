@@ -1,5 +1,7 @@
 const add_contact_button = document.getElementById('add_contact_button');
 
+const contact_bot = document.getElementById('contact_bot')
+
 const search_button = document.getElementById('search_button');
 
 const search_input = document.getElementById('search_input');
@@ -10,9 +12,9 @@ let all_contact = [];
 
 const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const nameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
+const nameCheck = /^[a-zA-ZàáâäãåąčćęèıəğöşçéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
-const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
+const surnameCheck = /^[a-zA-ZàáâäãåąčćęèéêëıəğöşçėįìíîïłńñòóôöõøśšùúûüųūÿýżźžÀÁÂÄÃÅĄČĆĘÈÉÊËĖĮÌÍÎÏŁŃÑÒÓÔÖÕØŚŠÙÚÛÜŲŪŸÝŻŹŽ\-'\s]{1,20}$/;
 
 const numberCheck = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
@@ -29,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storedContacts) {
 
         const contacts = JSON.parse(storedContacts);
+
+        contacts.reverse()
 
         all_contact = contacts;
 
@@ -244,11 +248,11 @@ function displayContacts(contacts) {
                 emaildiv.style.display = 'grid'
 
                 emaildiv.classList.add('description');
-                
+
                 emaildiv.style.justifyContent = 'center'
 
                 emaildiv.style.textAlign = 'center'
-                
+
             }
         });
 
@@ -275,9 +279,9 @@ function displayContacts(contacts) {
             emaildiv.style.flexDirection = 'column'
 
             const nameinput = document.createElement('input');
-           
+
             nameinput.classList.add('inputedit')
-            
+
             nameinput.value = namevalue.textContent;
 
             nameinput.id = 'namevalue';
@@ -287,9 +291,9 @@ function displayContacts(contacts) {
             const surnameinput = document.createElement('input');
 
             surnameinput.value = surnamevalue.textContent;
-            
+
             surnameinput.classList.add('inputedit')
-            
+
             surnameinput.id = 'surnamevalue';
 
             surnamevalue.replaceWith(surnameinput);
@@ -405,7 +409,7 @@ function successPanelfunc() {
 
     const successPanel = document.getElementById('successPanel')
 
-    const checkpanel_container =document.getElementById('checkpanel_container')
+    const checkpanel_container = document.getElementById('checkpanel_container')
 
     checkpanel_container.style.display = 'flex'
 
@@ -427,7 +431,7 @@ function delPanelfunc() {
 
     delPanel.style.display = 'flex';
 
-    const checkpanel_container =document.getElementById('checkpanel_container')
+    const checkpanel_container = document.getElementById('checkpanel_container')
 
     checkpanel_container.style.display = 'flex'
 
@@ -447,7 +451,7 @@ function errorPanelfunc() {
 
     errorPanel.style.display = 'flex';
 
-    const checkpanel_container =document.getElementById('checkpanel_container')
+    const checkpanel_container = document.getElementById('checkpanel_container')
 
     checkpanel_container.style.display = 'flex'
 
@@ -455,20 +459,20 @@ function errorPanelfunc() {
     setTimeout(function () {
 
         errorPanel.style.display = 'none';
-        
+
         checkpanel_container.style.display = 'none'
 
     }, 3000);
 }
 
 descriptionvalue.addEventListener('input', () => {
-    
+
     const maxLength = 20;
-    
+
     if (descriptionvalue.value.length > maxLength) {
 
         descriptionvalue.style.borderColor = 'red';
-    
+
         descriptionvalue.value = description.value.slice(0, maxLength);
-    } 
+    }
 });
