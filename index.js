@@ -41,6 +41,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const storedContacts = localStorage.getItem('contacts');
+
+    let contactsArray = storedContacts ? JSON.parse(storedContacts) : [];
+
+    if (!storedContacts) {
+        for (let i = 0; i < 10; i++) {
+            const data_item = {
+                name: 'Fazil',
+                surname: 'Məmmədov',
+                email: 'fazil.mammedov@gmail.com',
+                number: '+994500000000',
+                description: 'Hello World'
+            };
+            contactsArray.push(data_item);
+        }
+        localStorage.setItem('contacts', JSON.stringify(contactsArray));
+
+        location.reload();
+    }
+});
+
 function displayContacts(contacts) {
 
     add_contact.innerHTML = '';
