@@ -107,6 +107,8 @@ button {
 
 
 .contact {
+    display: flex;
+    align-items: center;
     padding: 15px 25px;
     border: unset;
     border-radius: 15px;
