@@ -425,8 +425,44 @@ search_input.addEventListener('input', () => {
     displayContacts(filteredContacts);
 });
 
+search_input.addEventListener('input', () => {
+    const searchValue = search_input.value.toLowerCase();
+
+    const filteredContacts = all_contact.filter(contact =>
+
+        contact.surname.toLowerCase().includes(searchValue)
+
+    );
+
+    displayContacts(filteredContacts);
+});
 
 
+search_input.addEventListener('input', () => {
+    const searchValue = search_input.value.toLowerCase();
+
+    const filteredContacts = all_contact.filter(contact =>
+
+        contact.number.toLowerCase().includes(searchValue)
+
+    );
+
+    displayContacts(filteredContacts);
+});
+
+
+
+search_input.addEventListener('input', () => {
+    const searchValue = search_input.value.toLowerCase();
+
+    const filteredContacts = all_contact.filter(contact =>
+
+        contact.email.toLowerCase().includes(searchValue)
+
+    );
+
+    displayContacts(filteredContacts);
+});
 function successPanelfunc() {
 
     const successPanel = document.getElementById('successPanel')
