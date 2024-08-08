@@ -61,6 +61,7 @@ body {
 
 #add_contact {
     min-height: 400px;
+    height: 100vh;
     margin-bottom: 3rem;
 }
 

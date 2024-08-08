@@ -357,6 +357,17 @@ function displayContacts(contacts) {
             save.style.display = 'block';
 
         });
+        descriptionvalue.addEventListener('input', () => {
+
+            const maxLength = 20;
+        
+            if (descriptionvalue.value.length > maxLength) {
+        
+                descriptionvalue.style.borderColor = 'red';
+        
+                descriptionvalue.value = description.value.slice(0, maxLength);
+            }
+        });
 
         save.addEventListener('click', () => {
 
@@ -523,14 +534,3 @@ function errorPanelfunc() {
     }, 3000);
 }
 
-descriptionvalue.addEventListener('input', () => {
-
-    const maxLength = 20;
-
-    if (descriptionvalue.value.length > maxLength) {
-
-        descriptionvalue.style.borderColor = 'red';
-
-        descriptionvalue.value = description.value.slice(0, maxLength);
-    }
-});
